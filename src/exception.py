@@ -1,9 +1,16 @@
 import sys
+import os
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
+from src.logger import logging
 
 class CustomException(Exception):
     def __init__(self,error,details:sys):
         super().__init__(error)
         self.error= error_message_formated(error,details)
+        logging.info(e)
+        
 
     def __str__(self):
         return self.error
