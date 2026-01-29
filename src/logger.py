@@ -1,6 +1,9 @@
 import logging 
 from datetime import datetime
 import os
+import sys
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 filename = datetime.now().strftime("log_%Y-%m-%d_%H-%M-%S.txt")
 
