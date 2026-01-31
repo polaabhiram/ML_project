@@ -78,8 +78,3 @@ class DataTransformation:
         except Exception as e:
             raise CustomException(e,sys)
 
-
-
-if __name__ == "__main__":
-    obj=DataTransformation()
-    obj.initiate_transformation(os.path.join('artifacts','train.csv'),os.path.join("artifacts","test.csv"))
