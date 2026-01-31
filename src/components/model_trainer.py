@@ -2,14 +2,12 @@ from src.logger import logging
 from src.exception import CustomException
 import sys
 
-from src.components.data_transformation import DataTransformation,DataTransformationconfig
 
 from sklearn.linear_model import LinearRegression
 from sklearn.tree import DecisionTreeRegressor
 from xgboost import XGBRegressor
 from sklearn.ensemble import GradientBoostingRegressor,RandomForestRegressor,AdaBoostRegressor
 
-from sklearn.metrics import r2_score,mean_squared_error
 import os
 
 from src.utils import save_object,evaluate_models
@@ -26,7 +24,7 @@ class ModelTrainer:
         os.makedirs(os.path.dirname(self.config.trained_model_path), exist_ok=True)
 
 
-    def initiate_train(self,train_arr,test_arr,preprocessor_path):
+    def initiate_train(self,train_arr,test_arr):
         logging.info("Initiating model training")
         try:
             X_train,Y_train,X_test,Y_test=(
