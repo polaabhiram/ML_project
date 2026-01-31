@@ -5,6 +5,8 @@ from src.logger import logging
 from sklearn.model_selection import train_test_split
 import sys
 from src.exception import CustomException
+from src.components.data_transformation import DataTransformation,DataTransformationconfig 
+from src.components.model_trainer import Model_trainer_config,ModelTrainer
 
 
 @dataclass
@@ -40,6 +42,8 @@ class DataIngestion:
 
             logging.info("Inmgestion of the data iss completed")
 
+            return(self.config.train_data_path,self.config.test_data_path)
+
         except Exception as e:
              raise CustomException(e,sys)
 
@@ -48,4 +52,8 @@ class DataIngestion:
 
 if __name__ == "__main__":
     obj= DataIngestion()
-    obj.initiate_ingestion()
+    a,b=obj.initiate_ingestion()
+    dt=DataTransformation()
+    x,y,z=dt.initiate_transformation(a,b)
+    mod=ModelTrainer()
+    mod.initiate_train(x,y)

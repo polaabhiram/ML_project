@@ -39,10 +39,9 @@ def evaluate_models(X_train,Y_train,X_test,Y_test,models:dict):
         raise CustomException(e,sys)
     
 
-def load_object(path):
+def load_object(file_path):
     try:
-        with open (path,"wb") as obj:
-            return pickle.load(obj)
-    
+        with open(file_path, "rb") as file_obj:
+            return pickle.load(file_obj)
     except Exception as e:
-        raise CustomException(e)
+        raise CustomException(e, sys)

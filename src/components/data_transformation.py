@@ -35,7 +35,7 @@ class DataTransformation:
             )
 
             cat_pipeline=Pipeline(
-                [("imputer",SimpleImputer(strategy="most_frequent")),("ohe",OneHotEncoder())]
+                [("imputer",SimpleImputer(strategy="most_frequent")),("ohe",OneHotEncoder(handle_unknown="ignore"))]
             )
 
             transformer= ColumnTransformer(

@@ -3,6 +3,7 @@ import pandas as pd
 from src.exception import CustomException
 from src.utils import load_object
 import os
+from src.logger import logging
 
 class CustomData:
     def __init__(  self,
@@ -54,13 +55,13 @@ class PredictionPipeline:
         try:
                 
         
-            preprocessor=load_object(os.path.join("artifacts","models","model.pkl"))
-
+            preprocessor=load_object(os.path.join("artifacts","models","preprocessor.pkl"))
             data_scaled=preprocessor.transform(data)
 
-            model=load_object(os.path.join("artifacts","models","preprocessor.pkl"))
-            
+            model=load_object(os.path.join("artifacts","models","model.pkl"))
+            logging.info(model.predict(data_scaled))    
             return model.predict(data_scaled)
+        
         
         except Exception as e:
             raise CustomException(e,sys)

@@ -16,7 +16,7 @@ from dataclasses import dataclass
 
 @dataclass
 class Model_trainer_config:
-    trained_model_path: str = os.path.join("artifacts", "models", "model.pkl")
+    trained_model_path: str = os.path.join("artifacts", "models")
 
 class ModelTrainer:
     def __init__(self):
@@ -54,7 +54,7 @@ class ModelTrainer:
 
             best_model=models[best_model_name]
 
-            save_object(os.path.join(self.config.trained_model_path),best_model)
+            save_object(os.path.join(self.config.trained_model_path,"model.pkl"),best_model)
             
             
             if best<0.7:
